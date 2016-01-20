@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project default ="main">
+	<target name="main" depends="clean,compile,jar">
+		<echo>main...</echo>
+	</target>
+	<target name="compile">
+		<echo>compiling...</echo>
+		<javac destdir="..">
+			<src>
+				<pathelement path="."/>
+			</src>
+			<classpath>
+				<pathelement location="${dir.libraries}/library.jar" />
+			</classpath>
+		</javac>
+	</target>
+	<target name="clean">
+		<echo>cleaning...</echo>
+	</target>
+	<target name="jar">
+		<echo>JARing...</echo>
+		<jar destfile="spaceInvaders.jar">
+			<fileset dir="./bin">
+				<include name="**/*.class"/>
+			</fileset>
+			<manifest>
+				<attribute name="Main-Class" value="${SI}"/>
+				<section name="Information">
+					<attribute name="Author"          value="Bret Kirk" />
+					<attribute name="Affilaition"     value="CNU" />
+					<attribute name="Date"     		  value="12/2/15" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+</project>
